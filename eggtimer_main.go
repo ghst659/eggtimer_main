@@ -11,7 +11,7 @@ func main() {
 	c := exec.Command("/home/tsc/dda/dev/go/hourglass/bin/sandmock")
 	events := make(chan eggtimer.Event)
 	var segmenter eggtimer.Segmenter
-	segmenter.AddDefinition(eggtimer.NewRegexpDef("SandMock", `^Begin\s+(\w+)`, `Finished\s+(\w+)`))
+	segmenter.AddDefinition("SandMock", `^Begin\s+(\w+)`, `Finished\s+(\w+)`)
 	go r.Run(c, events)
 	activities, err := segmenter.Collect(events)
 	if err != nil {
